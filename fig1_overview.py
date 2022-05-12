@@ -33,7 +33,7 @@ def map_alt_h2o(dat):
     m.drawmeridians(meridians,labels=[True,False,False,True])
     
     # MLS flyovers
-    coords = np.loadtxt("./Data/MLS_H2O_SClim/profilesCoord.txt", skiprows=1)
+    coords = np.loadtxt("./Data/MLS4SClim_V5/profilesCoord.txt", skiprows=1)
     lon, lat = coords[:,0], coords[:,1]
     print(np.shape(lon))
     m.plot(lon,lat,'.',color='grey',latlon=True)

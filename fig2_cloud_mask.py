@@ -7,18 +7,9 @@ def cloud_mask(dat):
     t1 = [14.5, 13.55, 10.55, 15.1]
     t2 = [17.85, 16.4, 12.2, 17.7]
     
-    fig = plt.figure(figsize=(14,14))
-    ax_com = fig.add_subplot(111)    # The big subplot
-    ax = [fig.add_subplot(411), fig.add_subplot(412), fig.add_subplot(413), fig.add_subplot(414)]
+    fig, ax = plt.subplots(ncols=1, nrows=4, figsize=(14,14), constrained_layout=True)
     plt.rcParams.update({'font.size':20})
     
-    # Turn off axis lines and ticks of the big subplot
-    ax_com.spines['top'].set_color('none')
-    ax_com.spines['bottom'].set_color('none')
-    ax_com.spines['left'].set_color('none')
-    ax_com.spines['right'].set_color('none')
-    ax_com.tick_params(labelcolor='w', top=False, bottom=False, left=False, right=False)
-
     for i,f in enumerate(flno):
         dati = dat[(dat['FLIGHT'] == f) & (dat['ALT'] > 12.0)]
         xvar = 'TIME'; xfac = 1/3600.; xoff = 5.75
@@ -27,7 +18,6 @@ def cloud_mask(dat):
         dati_mc = dati[(dati['MASBR'] >= 1.2)]
         dati_nc = dati[(dati['NICE'] > 0.0)]
         dati_ic = dati[(dati['IWC'] > 0.0)]
-        #dati_particles = dat[(dat['FLIGHT'] == f) & (dat['ALT'] > 15.0) & (dat['PARTICLES'] == 1)]
 
         ax[i].set_yscale('log')
         ax[i].set_ylim([1e-3,1e2])
@@ -57,6 +47,6 @@ def cloud_mask(dat):
 
     lgd = ax[0].legend([mas,nice,iwc],['BR $\geq$ 1.2','N$_{ice}$ > 0','IWC > 0'], markerscale=3,
                        frameon=True, loc=(0.77,0.05), fontsize=15)
-    plt.tight_layout()
-    plt.savefig('Paper-Figures/supp-cldmask-nice.png', bbox_extra_artists=(lgd,), bbox_inches='tight', dpi=300)
+    plt.savefig('Paper-Figures/fig2-cldmask-nice.png', bbox_extra_artists=(lgd,),
+        bbox_inches='tight', dpi=300)
     plt.show()

@@ -73,5 +73,5 @@ def dry_errors_2rows(dat):
                 
     plt.rcParams.update({"font.size":25})
     plt.tight_layout()
-    plt.savefig("Paper-Figures/fig3-diff-hist.png",dpi=200)
+    plt.savefig("Paper-Figures/fig4-diff-hist.png",dpi=200)
     plt.show()

@@ -1,14 +1,10 @@
 import matplotlib.pyplot as plt
 import numpy as np
-import warnings
-warnings.filterwarnings("ignore")
+
+flno = [2,3,4,6,7,8]
+colors = ["k","#045275","#0C7BDC","#7CCBA2","k","#FED976","#F0746E","#7C1D6F"]
 
 def frac_error_pdfs(dat):
-    flno = [2,3,4,6,7,8]
-    #colors = ['black','red','orange','lime','black','green','blue','purple']
-    colors = ["k","#045275","#0C7BDC","#7CCBA2","k","#FED976","#F0746E","#7C1D6F"]
-    lags = [0,5,10,20]
-    
     # add cloudy flag
     dat['CLOUDY'] = ((dat['NICE'] > 0) | (dat['MASBR'] >= 1.2)).astype(int)
     
@@ -25,6 +21,7 @@ def frac_error_pdfs(dat):
     # FL7 dive flag
     dat['F7_DIVE'] = ((dat['FLIGHT'] == 7) & (dat['TIME'] > 19.9e3) & (dat['TIME'] < 20.2e3)).astype('int')
 
+    lags = [0,5,10,20]
     cols = len(lags) + 1
     fig,axes = plt.subplots(len(flno),cols,figsize=(5*cols,4*len(flno)),sharey=True,sharex=False)
     plt.rcParams.update({"font.size":25})

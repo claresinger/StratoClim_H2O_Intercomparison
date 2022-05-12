@@ -91,5 +91,5 @@ def h2o_diff_profs_clr_cloud(dat):
     cax = fig.add_subplot(gs0[-1])
     plt.colorbar(m[3], cax=cax, ticks=np.geomspace(5,500,3), label="counts")
     plt.tight_layout()
-    plt.savefig("Paper-Figures/fig4-diff-profiles.png",dpi=200)
+    plt.savefig("Paper-Figures/fig5-diff-profiles.png",dpi=200)
     plt.show()

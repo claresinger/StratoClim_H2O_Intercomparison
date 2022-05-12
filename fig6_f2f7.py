@@ -111,5 +111,5 @@ def h2o_f2_f7(dat):
 
     plt.rcParams.update({'font.size': 20})
     fig.tight_layout()
-    plt.savefig("./Paper-Figures/fig5-f2f7.png",dpi=300)
+    plt.savefig("./Paper-Figures/fig6-f2f7.png",dpi=300)
     plt.show()
